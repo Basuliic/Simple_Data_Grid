@@ -1,12 +1,12 @@
 package com.basuliic.datagrid.model;
 
-        import java.util.List;
+import com.basuliic.datagrid.dao.ContactDAO;
+import com.basuliic.datagrid.service.ContactService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-        import com.basuliic.datagrid.dao.ContactDAO;
-        import com.basuliic.datagrid.service.ContactService;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.stereotype.Service;
-        import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -15,18 +15,28 @@ public class ContactServiceImpl implements ContactService {
     private ContactDAO contactDAO;
 
     @Transactional
+    public Contact getContact(Integer id) {
+        return contactDAO.getContact(id);
+    }
+
+    @Transactional
     public void addContact(Contact contact) {
         contactDAO.addContact(contact);
     }
 
     @Transactional
-    public List<Contact> listContact() {
-
-        return contactDAO.listContact();
+    public void updateContact(Contact contact) {
+        contactDAO.updateContact(contact);
     }
 
     @Transactional
-    public void removeContact(Integer id) {
-        contactDAO.removeContact(id);
+    public List<Contact> getListOfContacts() {
+
+        return contactDAO.getListOfContacts();
+    }
+
+    @Transactional
+    public void removeContact(Integer... ids) {
+        contactDAO.removeContact(ids);
     }
 }

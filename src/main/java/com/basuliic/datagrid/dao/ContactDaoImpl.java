@@ -1,11 +1,12 @@
 package com.basuliic.datagrid.dao;
 
-import java.util.List;
-
 import com.basuliic.datagrid.model.Contact;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class ContactDaoImpl implements ContactDAO {
@@ -13,22 +14,37 @@ public class ContactDaoImpl implements ContactDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Override
+    public Contact getContact(Integer id) {
+        return (Contact) sessionFactory.getCurrentSession().byId(Contact.class).load(id);
+    }
+
+    @Override
     public void addContact(Contact contact) {
         sessionFactory.getCurrentSession().save(contact);
     }
 
-    public List<Contact> listContact() {
+    @Override
+    public void updateContact(Contact contact) {
+        sessionFactory.getCurrentSession().merge(contact);
+    }
+
+    @Override
+    public List<Contact> getListOfContacts() {
 
         return sessionFactory.getCurrentSession().createQuery("from Contact")
                 .list();
     }
 
-    public void removeContact(Integer id) {
-        Contact contact = (Contact) sessionFactory.getCurrentSession().load(
-                Contact.class, id);
-        if (null != contact) {
-            sessionFactory.getCurrentSession().delete(contact);
+    @Override
+    public void removeContact(Integer... ids) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        for (Integer id : ids) {
+            Contact contact = (Contact) currentSession.load(
+                    Contact.class, id);
+            if (null != contact) {
+                currentSession.delete(contact);
+            }
         }
-
     }
 }

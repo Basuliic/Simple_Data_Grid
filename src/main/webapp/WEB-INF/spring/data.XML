@@ -7,30 +7,27 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-
     <!-- Менеджер транзакций -->
     <bean id="transactionManager"
-    class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <!-- Настройки бина dataSource будем хранить в отдельном файле -->
     <bean id="propertyConfigurer"
-    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-    p:location="/WEB-INF/jdbc.properties"/>
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="/WEB-INF/jdbc.properties"/>
 
-    <!-- Непосредственно бин dataSource -->
+    <!--Getting Tomcat's connection poll-->
     <bean id="dataSource"
-    class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-    p:driverClassName="${jdbc.driverClassName}"
-    p:url="${jdbc.databaseurl}"
-    p:username="${jdbc.username}"
-    p:password="${jdbc.password}"/>
+          class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/mySQL"/>
+    </bean>
 
     <!-- Настройки фабрики сессий Хибернейта -->
     <beans:bean id="sessionFactory"
-    class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <beans:property name="dataSource" ref="dataSource" />
+                class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <beans:property name="dataSource" ref="dataSource"/>
         <beans:property name="annotatedClasses">
             <beans:list>
                 <beans:value>com.basuliic.datagrid.model.Contact</beans:value>
@@ -39,6 +36,7 @@
         <beans:property name="hibernateProperties">
             <beans:props>
                 <beans:prop key="hibernate.dialect">${jdbc.dialect}</beans:prop>
+                <beans:prop key="hibernate.connection.pool_size">3</beans:prop>
                 <beans:prop key="hibernate.connection.charSet">UTF-8</beans:prop>
                 <beans:prop key="hibernate.show_sql">true</beans:prop>
             </beans:props>

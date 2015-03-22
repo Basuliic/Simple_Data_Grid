@@ -25,8 +25,24 @@ public class Contact {
     private String telephone;
 
     @Column(name = "CREATED")
-    private Date created;
+    private Date creationDate;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Contact contact = (Contact) o;
+
+        if (!id.equals(contact.id)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 
     public String getEmail() {
         return email;
@@ -66,5 +82,13 @@ public class Contact {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 }
