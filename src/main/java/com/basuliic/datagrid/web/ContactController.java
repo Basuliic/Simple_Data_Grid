@@ -19,11 +19,16 @@ public class ContactController {
     private ContactService contactService;
 
     @RequestMapping("/index")
-    public String listContacts(Map<String, Object> map) {
+    public String listContacts() {
+        return "contact";
+    }
+
+    @RequestMapping("/datagrid")
+    public String datagrid(Map<String, Object> map) {
 
         map.put("contactList", contactService.getListOfContacts());
 
-        return "contact";
+        return "datagrid";
     }
 
     @RequestMapping("/")
