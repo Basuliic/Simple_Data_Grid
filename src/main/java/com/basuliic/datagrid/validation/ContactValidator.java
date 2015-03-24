@@ -20,7 +20,7 @@ public class ContactValidator {
     }
 
     private static boolean checkName(String name) {
-        return name.matches("^[a-zA-Z]{4,30}$");
+        return name.matches("^[a-zA-Z]{1,30}$");
     }
 
     private static boolean checkEmail(String name) {

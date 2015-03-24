@@ -19,7 +19,7 @@ function setImg(id, isOk) {
 }
 
 function checkName(name) {
-    var re = /^[a-zA-Z~]{4,30}$/;//todo remove '~' after testing
+    var re = /^[a-zA-Z~]{1,30}$/;//todo remove '~' after testing
     return re.test(name);
 }
 
