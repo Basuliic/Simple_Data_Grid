@@ -20,4 +20,9 @@ public class ErorController {
     public String otherErr() {
         return "errRequest";
     }
+
+    @RequestMapping("/noConnect")
+    public String noBaseConnection() {
+        return "noConnect";
+    }
 }
