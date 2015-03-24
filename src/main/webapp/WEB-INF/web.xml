@@ -42,6 +42,11 @@
         <location>/badRequest</location>
     </error-page>
 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/noConnect</location>
+    </error-page>
+
     <resource-ref>
         <description>MySQL Datasource</description>
         <res-ref-name>jdbc/mySQL</res-ref-name>

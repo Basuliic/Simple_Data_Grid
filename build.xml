@@ -12,7 +12,6 @@
     <target name="war" depends="compile">
         <war destfile="${output.dir}/SimpleDataGrid.war" webxml="${webcontent}/WEB-INF/web.xml">
             <fileset dir="${webcontent}"/>
-            <lib dir="${webcontent}/WEB-INF/lib"/>
             <classes dir="${output.dir}/classes"/>
         </war>
     </target>
