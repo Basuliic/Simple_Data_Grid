@@ -18,11 +18,14 @@ public class Contact {
     @Column(name = "LASTNAME")
     private String lastname;
 
+    @Column(name = "RATING")
+    private float rating;
+
     @Column(name = "EMAIL")
     private String email;
 
     @Column(name = "TELEPHONE")
-    private String telephone;
+    private long telephone;
 
     @Column(name = "CREATED")
     private Date creationDate;
@@ -48,7 +51,7 @@ public class Contact {
         return email;
     }
 
-    public String getTelephone() {
+    public long getTelephone() {
         return telephone;
     }
 
@@ -56,7 +59,7 @@ public class Contact {
         this.email = email;
     }
 
-    public void setTelephone(String telephone) {
+    public void setTelephone(long telephone) {
         this.telephone = telephone;
     }
 
@@ -82,6 +85,14 @@ public class Contact {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 
     public Date getCreationDate() {

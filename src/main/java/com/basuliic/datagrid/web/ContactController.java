@@ -2,6 +2,7 @@ package com.basuliic.datagrid.web;
 
 import com.basuliic.datagrid.model.Contact;
 import com.basuliic.datagrid.service.ContactService;
+import org.hibernate.metamodel.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -36,11 +37,18 @@ public class ContactController {
         return "redirect:/index";
     }
 
+    @RequestMapping("/err")
+    public String err() {
+        return "validationErr";
+    }
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addContact(@ModelAttribute("contact") Contact contact) {
-
-        contactService.addContact(contact);
-
+        try {
+            contactService.addContact(contact);
+        } catch (ValidationException e) {
+            return "validationErr";
+        }
         return "redirect:/index";
     }
 
@@ -53,9 +61,11 @@ public class ContactController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateContact(@ModelAttribute("contact") Contact contact) {
-
-        contactService.updateContact(contact);
-
+        try {
+            contactService.updateContact(contact);
+        } catch (ValidationException e) {
+            return "validationErr";
+        }
         return "redirect:/index";
     }
 

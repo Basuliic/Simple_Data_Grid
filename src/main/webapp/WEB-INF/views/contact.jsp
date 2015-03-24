@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
     <title>Contact Base</title>
     <link rel="stylesheet" type="text/css" href="resources/main.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/datagrid.css"/>
     <script src="/resources/microajax.js" language="Javascript" type="application/javascript"></script>
     <script language="Javascript" type="application/javascript">
         <!--
@@ -39,9 +40,6 @@
 </head>
 <body>
 <h2>Contact Base</h2>
-
-<h3>Contacts</h3>
-
 <form name="Form1" method="POST">
     <div id="datagrid"></div>
     <input type="button" onclick="deleteRows()" value="Delete">
