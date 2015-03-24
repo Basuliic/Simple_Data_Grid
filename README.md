@@ -1,6 +1,7 @@
 # Simple_Data_Grid
 This is web project with Hibernate 4, Spring MVC integration and few pages for working with data
 
+for testing validation on page edit was allowed to use ~ in name, whereas on server it forbidden,
 for creating and filling yuor base you can execute this MySQL query:
 
 
