@@ -47,7 +47,7 @@ public class ContactController {
         try {
             contactService.addContact(contact);
         } catch (ValidationException e) {
-            return "validationErr";
+            return "redirect:/err";
         }
         return "redirect:/index";
     }
@@ -64,7 +64,7 @@ public class ContactController {
         try {
             contactService.updateContact(contact);
         } catch (ValidationException e) {
-            return "validationErr";
+            return "redirect:/err";
         }
         return "redirect:/index";
     }
