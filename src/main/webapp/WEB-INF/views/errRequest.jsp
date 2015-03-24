@@ -5,8 +5,8 @@
     <link rel="stylesheet" type="text/css" href="resources/main.css"/>
 </head>
 <body>
-<h2 class="error">Validation error occurred</h2>
-Please, turn on JavaScript on your browser. </br>
+<h2 class="error">Bad request</h2>
+Some strange error occured... </br>
 If error whill repeat, please contact <a href="mailto:basuliic@gmail.com">us</a>.
 <br>
 

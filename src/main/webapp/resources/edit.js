@@ -53,6 +53,6 @@ function checkFormOk() {
     if (checkFirstName() && checkLastName() && checkEmail() && checkTelephone()) {
         return true;
     }
-    document.getElementById('message').innerHTML = "Please, fill all fields";
+    document.getElementById('message').innerHTML = "Please, fill all fields as required";
     return false;
 }

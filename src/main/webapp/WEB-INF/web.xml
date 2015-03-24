@@ -32,6 +32,16 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/err404</location>
+    </error-page>
+
+    <error-page>
+        <error-code>400</error-code>
+        <location>/badRequest</location>
+    </error-page>
+
     <resource-ref>
         <description>MySQL Datasource</description>
         <res-ref-name>jdbc/mySQL</res-ref-name>

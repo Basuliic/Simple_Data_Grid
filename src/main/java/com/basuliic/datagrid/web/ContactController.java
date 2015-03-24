@@ -37,11 +37,6 @@ public class ContactController {
         return "redirect:/index";
     }
 
-    @RequestMapping("/err")
-    public String err() {
-        return "validationErr";
-    }
-
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addContact(@ModelAttribute("contact") Contact contact) {
         try {
