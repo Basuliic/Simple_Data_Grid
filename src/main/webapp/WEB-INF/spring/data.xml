@@ -13,7 +13,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <!-- Настройки бина dataSource будем хранить в отдельном файле -->
+    <!-- Storing configuration of bean 'dataSource' at separate file-->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           p:location="/WEB-INF/prop.properties"/>
